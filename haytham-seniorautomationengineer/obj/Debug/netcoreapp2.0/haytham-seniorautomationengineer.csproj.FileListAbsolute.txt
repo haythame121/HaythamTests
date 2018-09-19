@@ -1,0 +1,4 @@
+C:\Users\haythame\Documents\haytham-seniorautomationengineer\haytham-seniorautomationengineer\obj\Debug\netcoreapp2.0\haytham-seniorautomationengineer.csprojAssemblyReference.cache
+C:\Users\haythame\Documents\haytham-seniorautomationengineer\haytham-seniorautomationengineer\obj\Debug\netcoreapp2.0\haytham-seniorautomationengineer.csproj.CoreCompileInputs.cache
+C:\Users\haythame\Documents\haytham-seniorautomationengineer\haytham-seniorautomationengineer\obj\Debug\netcoreapp2.0\haytham-seniorautomationengineer.AssemblyInfoInputs.cache
+C:\Users\haythame\Documents\haytham-seniorautomationengineer\haytham-seniorautomationengineer\obj\Debug\netcoreapp2.0\haytham-seniorautomationengineer.AssemblyInfo.cs
