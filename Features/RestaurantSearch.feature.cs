@@ -32,8 +32,8 @@ namespace ClassLibrary2.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Use the website to find restaurants", "So that I can order food\r\nAs a hungry customer\r\nI want to be able to find restaur" +
-                    "ants in my area", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Use the website to find restaurants", "\tSo that I can order food\r\n\tAs a hungry customer\r\n\tI want to be able to find rest" +
+                    "aurants in my area", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -67,16 +67,20 @@ namespace ClassLibrary2.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search for restaurants in an area")]
-        public virtual void SearchForRestaurantsInAnArea()
+        [NUnit.Framework.TestCaseAttribute("Domino\'s", null)]
+        [NUnit.Framework.TestCaseAttribute("Papa Johns", null)]
+        [NUnit.Framework.TestCaseAttribute("Frankie and Benny\'s", null)]
+        [NUnit.Framework.TestCaseAttribute("nandos", null)]
+        public virtual void SearchForRestaurantsInAnArea(string restaurants, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for restaurants in an area", ((string[])(null)));
-#line 5
-  this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for restaurants in an area", exampleTags);
 #line 6
-   testRunner.Given("I want food in \"AR51 1AA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 7
-   testRunner.When("I search for restaurants", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+   testRunner.Given("I want food in AR51 1AA", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
+   testRunner.When(string.Format("I search for {0}", restaurants), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 15
    testRunner.Then("I should see some restaurants in \"AR51 1AA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
