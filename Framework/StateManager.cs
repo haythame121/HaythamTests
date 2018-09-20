@@ -1,18 +1,18 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace ClassLibrary2.Framework
 {
-    public class StateManager
+    public static class StateManager
     {
-        public static void Save(string key, object value)
+        public static void Save(string restaurant, string headerText)
         {
-            ScenarioContext.Current[key] = value;
+            ScenarioContext.Current[restaurant] = headerText;
         }
 
-        public static T Get<T>(string key) where T : class
+        public static string Get(string restaurant)
         {
-            return ScenarioContext.Current[key] as T;
+            return ScenarioContext.Current[restaurant].ToString();
         }
     }
 }

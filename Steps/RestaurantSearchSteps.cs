@@ -1,5 +1,7 @@
 ﻿using System.Threading;
+using ClassLibrary2.Framework;
 using ClassLibrary2.Framework.PageObjectModel;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using TechTalk.SpecFlow;
@@ -26,7 +28,7 @@ namespace ClassLibrary2.Steps
         [AfterScenario]
         public void AfterScenario()
         {
-            //_driver.Quit();
+            _driver.Quit();
         }
 
         [Given(@"I want food in (.*)")]
@@ -44,16 +46,16 @@ namespace ClassLibrary2.Steps
         public void WhenISearchForRestaurants(string restaurant)
         {
             _searchPage.Search(_searchPage.RestaurantSearchInput, restaurant);
-            _searchPage.FindInPage(restaurant);
- 
-            Thread.Sleep(5000);
-
+            var subHeaderText = _searchPage.FindInPage();
+            StateManager.Save(restaurant, subHeaderText);
         }
 
-        [Then(@"I should see some restaurants in (.*)")]
-        public void ThenIShouldSeeSomeRestaurantsIn(string p0)
+        [Then(@"I should see some (.*) in (.*)")]
+        public void ThenIShouldSeeSomeRestaurantsIn(string restaurant, string expectedPostcode)
         {
+            var actualSubheaderforRestaurant = StateManager.Get(restaurant);
 
+            Assert.That(actualSubheaderforRestaurant.Contains(expectedPostcode));
         }
     }
 }
