@@ -27,6 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Driver\chromedriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Features\RestaurantSearch.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RestaurantSearch.feature.cs</LastGenOutput>

@@ -1,4 +1,5 @@
-﻿using BoDi;
+﻿using System.IO;
+using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
@@ -18,7 +19,7 @@ namespace ClassLibrary2.Framework
         [BeforeScenario(Order = 0)]
         public void InitializeWebDriver()
         {
-            var webDriver = new ChromeDriver(@"C:\Users\haythame\Documents\dotNetCore\.Net-Core-Specflow-Sample\Driver\");
+            var webDriver = new ChromeDriver(Path.GetFullPath(@"Driver/"));
             _objectContainer.RegisterInstanceAs<IWebDriver>(webDriver);
         }
     }
