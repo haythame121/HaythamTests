@@ -57,7 +57,7 @@ namespace ClassLibrary2.Steps
             Assert.That(actualSubheaderforRestaurant.Contains(expectedPostcode));
         }
 
-        [Then(@"I shouldn't see the (.*) and I see the following (.*)")]
+        [Then(@"I shouldn't see the (.*) and I see the error message (.*)")]
         public void ThenIShouldntSeeSomeRestaurantsIn(string restaurant, string errorMessage)
         {
             var actualSubheaderforRestaurant = StateManager.Get(restaurant);

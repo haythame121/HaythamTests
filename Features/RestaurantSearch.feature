@@ -17,8 +17,9 @@ Examples:
 Scenario Outline: (Negative Scenario) Unable to search for restaurant(s) in an area
  		Given I want food in AR51 1AA
  		When I search for <restaurants>
- 		Then I shouldn't see the <restaurants> and I see the following <errorMessage>
+ 		Then I shouldn't see the <restaurants> and I see the error message No match found
 
 Examples:
-| restaurants | errorMessage   |
-| Nando's     | No match found |
+| restaurants    |
+| Nando's        |
+| Persian Palace |
