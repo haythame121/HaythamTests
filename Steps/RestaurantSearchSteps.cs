@@ -1,11 +1,11 @@
-﻿using ClassLibrary2.Framework;
-using ClassLibrary2.Framework.PageObjectModel;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using RestaurantSearch.UITests.Framework;
+using RestaurantSearch.UITests.Framework.PageObjectModel;
 using SeleniumExtras.PageObjects;
 using TechTalk.SpecFlow;
 
-namespace ClassLibrary2.Steps
+namespace RestaurantSearch.UITests.Steps
 {
     [Binding]
     public class RestaurantSearchSteps
@@ -38,7 +38,7 @@ namespace ClassLibrary2.Steps
 
             //Search by Postcode
             _searchPage.Search(_searchPage.PostcodeSearchInput, input);
-            _searchPage.Click();
+            _searchPage.SearchButton.Click();
         }
 
         [When(@"I search for (.*)")]
@@ -47,6 +47,15 @@ namespace ClassLibrary2.Steps
             _searchPage.Search(_searchPage.RestaurantSearchInput, restaurant);
             var subHeaderText = _searchPage.FindInPage();
             StateManager.Save(restaurant, subHeaderText);
+        }
+        //I navigate to the information page of the restaurant
+
+        [When(@"I change the area to (.*) using the 'Change Location' button")]
+        public void IChangeTheAreaUsingTheButton(string newInput)
+        {
+            _searchPage.RestaurantHeader.FindElement(By.TagName("a")).Click();
+            _searchPage.Search(_searchPage.PostcodeSearchInput, newInput);
+            _searchPage.SearchButton.Click();
         }
 
         [Then(@"I should see some (.*) in (.*)")]

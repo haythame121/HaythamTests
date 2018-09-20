@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 
-namespace ClassLibrary2.Framework
+namespace RestaurantSearch.UITests.Framework
 {
     [Binding]
     public class SeleniumIoCFactory

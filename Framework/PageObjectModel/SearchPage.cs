@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
-namespace ClassLibrary2.Framework.PageObjectModel
+namespace RestaurantSearch.UITests.Framework.PageObjectModel
 {
     public class SearchPage
     {
@@ -47,9 +47,9 @@ namespace ClassLibrary2.Framework.PageObjectModel
             return subHeaderTxt;
         }
 
-        public void Click()
+        public void Click(IWebElement searchOn)
         {
-            SearchButton.Click();
+            searchOn.Click();
         }
     }
 }

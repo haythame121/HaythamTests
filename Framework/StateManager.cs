@@ -1,6 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 
-namespace ClassLibrary2.Framework
+namespace RestaurantSearch.UITests.Framework
 {
     public static class StateManager
     {
