@@ -66,13 +66,13 @@ namespace ClassLibrary2.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("(Positive Scenario) Search for restaurants in an area")]
+        [NUnit.Framework.DescriptionAttribute("(Positive Scenario) Search for restaurant(s) in an area")]
         [NUnit.Framework.TestCaseAttribute("Domino\'s", null)]
         [NUnit.Framework.TestCaseAttribute("Papa Johns", null)]
         [NUnit.Framework.TestCaseAttribute("Frankie & Bennys", null)]
-        public virtual void PositiveScenarioSearchForRestaurantsInAnArea(string restaurants, string[] exampleTags)
+        public virtual void PositiveScenarioSearchForRestaurantSInAnArea(string restaurants, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("(Positive Scenario) Search for restaurants in an area", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("(Positive Scenario) Search for restaurant(s) in an area", exampleTags);
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
@@ -81,6 +81,24 @@ this.ScenarioSetup(scenarioInfo);
    testRunner.When(string.Format("I search for {0}", restaurants), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
    testRunner.Then(string.Format("I should see some {0} in AR51 1AA", restaurants), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("(Negative Scenario) Unable to search for restaurant(s) in an area")]
+        [NUnit.Framework.TestCaseAttribute("Nando\'s", "No match found", null)]
+        public virtual void NegativeScenarioUnableToSearchForRestaurantSInAnArea(string restaurants, string errorMessage, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("(Negative Scenario) Unable to search for restaurant(s) in an area", exampleTags);
+#line 17
+this.ScenarioSetup(scenarioInfo);
+#line 18
+   testRunner.Given("I want food in AR51 1AA", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 19
+   testRunner.When(string.Format("I search for {0}", restaurants), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+   testRunner.Then(string.Format("I shouldn\'t see the {0} and I see the following {1}", restaurants, errorMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using ClassLibrary2.Framework;
+﻿using ClassLibrary2.Framework;
 using ClassLibrary2.Framework.PageObjectModel;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -56,6 +55,14 @@ namespace ClassLibrary2.Steps
             var actualSubheaderforRestaurant = StateManager.Get(restaurant);
 
             Assert.That(actualSubheaderforRestaurant.Contains(expectedPostcode));
+        }
+
+        [Then(@"I shouldn't see the (.*) and I see the following (.*)")]
+        public void ThenIShouldntSeeSomeRestaurantsIn(string restaurant, string errorMessage)
+        {
+            var actualSubheaderforRestaurant = StateManager.Get(restaurant);
+
+            Assert.That(actualSubheaderforRestaurant.Equals(errorMessage));
         }
     }
 }

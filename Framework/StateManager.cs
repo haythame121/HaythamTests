@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
 namespace ClassLibrary2.Framework
 {
