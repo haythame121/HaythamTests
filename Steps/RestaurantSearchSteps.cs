@@ -17,26 +17,26 @@ namespace RestaurantSearch.UITests.Steps
         {
             _driver = driver;
         }
-
+        //Before Scenario: Initializing the driver with the page objects in Search page using PageFactory
         [BeforeScenario]
         public void BeforeScenario()
         {
             _searchPage= PageFactory.InitElements<SearchPage>(_driver);
         }
-
+        //After Scenario: Closing driver after each test run
         [AfterScenario]
         public void AfterScenario()
         {
             _driver.Quit();
         }
-
+        //Reusable test steps with one or more methods
         [Given(@"I want food in (.*)")]
         public void GivenIWantFoodIn(string input)
         {
             //Navigation to the page
             _searchPage.Navigate();
 
-            //Search by Postcode
+            //Search by Postcode and submit
             _searchPage.Search(_searchPage.PostcodeSearchInput, input);
             _searchPage.SearchButton.Click();
         }
@@ -44,16 +44,23 @@ namespace RestaurantSearch.UITests.Steps
         [When(@"I search for (.*)")]
         public void WhenISearchForRestaurants(string restaurant)
         {
+            //Search by restaurant
             _searchPage.Search(_searchPage.RestaurantSearchInput, restaurant);
+
+            //Find subheader associated to search
             var subHeaderText = _searchPage.FindInPage();
+
+            //Saving results to StateManager
             StateManager.Save(restaurant, subHeaderText);
         }
-        //I navigate to the information page of the restaurant
 
         [When(@"I change the area to (.*) using the 'Change Location' button")]
         public void IChangeTheAreaUsingTheButton(string newInput)
         {
+            //Clicking on the 'Change Location' button
             _searchPage.RestaurantHeader.FindElement(By.TagName("a")).Click();
+
+            //Changing postcode and submit
             _searchPage.Search(_searchPage.PostcodeSearchInput, newInput);
             _searchPage.SearchButton.Click();
         }
@@ -61,6 +68,7 @@ namespace RestaurantSearch.UITests.Steps
         [Then(@"I should see some (.*) in (.*)")]
         public void ThenIShouldSeeSomeRestaurantsIn(string restaurant, string expectedPostcode)
         {
+            //Assertion on positive results
             var actualSubheaderforRestaurant = StateManager.Get(restaurant);
 
             Assert.That(actualSubheaderforRestaurant.Contains(expectedPostcode));
@@ -69,6 +77,7 @@ namespace RestaurantSearch.UITests.Steps
         [Then(@"I shouldn't see the (.*) and I see the error message (.*)")]
         public void ThenIShouldntSeeSomeRestaurantsIn(string restaurant, string errorMessage)
         {
+            //Assertion on error result
             var actualSubheaderforRestaurant = StateManager.Get(restaurant);
 
             Assert.That(actualSubheaderforRestaurant.Equals(errorMessage));

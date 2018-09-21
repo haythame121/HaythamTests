@@ -9,6 +9,7 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
         private const string SearchUrl = "http://www.just-eat.co.uk/";
         private readonly IWebDriver _driver;
 
+        //Identified objects from page elements
         [FindsBy(How = How.Name, Using = "postcode")]
         public IWebElement PostcodeSearchInput { get; set; }
 
@@ -21,17 +22,18 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
         [FindsBy(How = How.ClassName, Using = "c-serp__header")]
         public IWebElement RestaurantHeader { get; set; }
 
+        //Initializing the registered driver to the page elements using PageFactory
         public SearchPage(IWebDriver driver)
         {
             _driver = driver;
             PageFactory.InitElements(driver, this);
         }
-
+        //Re-Usable methods
         public void Navigate()
         {
             _driver.Navigate().GoToUrl(SearchUrl);
         }
-
+        //Including IWebElement parameter to use Search method in n other areas in the test journey
         public void Search(IWebElement searchType, string input)
         {
             searchType.Clear();
@@ -46,7 +48,7 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
 
             return subHeaderTxt;
         }
-
+        //Including IWebElement parameter to Click in other areas in the test journey
         public void Click(IWebElement searchOn)
         {
             searchOn.Click();
