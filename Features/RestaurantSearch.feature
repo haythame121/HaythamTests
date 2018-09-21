@@ -10,10 +10,11 @@ Scenario Outline: (Positive Scenario) Search for restaurant(s) in an area
  		Then I should see some <restaurants> in AR51 1AA
 
 Examples:
-| restaurants      |
-| Domino's         |
-| Papa Johns       |
-| Frankie & Bennys |
+| restaurants |
+|             |
+| Domino's    |
+| Papa Johns  |
+| KFC         |
 
 
 Scenario Outline: (Negative Scenario) Unable to search for restaurant(s) in an area
@@ -25,6 +26,19 @@ Examples:
 | restaurants    |
 | Nando's        |
 | Persian Palace |
+| £$$£$          |
+| 09098          |
+
+
+Scenario Outline: Unable to search in an area using invalid values
+ 		Given I want food in AR51 1AA
+ 		When I search for <invalidValues>
+ 		Then I shouldn't see the <invalidValues> and I see the error message No match found
+
+Examples:
+| invalidValues |
+| £$$£$         |
+| 09098         |
 
 
 Scenario Outline: (Positive Scenario) Search for restaurant(s) through 'Change Location'
@@ -35,10 +49,11 @@ Scenario Outline: (Positive Scenario) Search for restaurant(s) through 'Change L
 		Then I should see some <restaurants> in W3 7JL
 
 Examples:
-| restaurants    |
-| Domino's       |
-| Woody Pizza    |
-| Persian Palace |
+| restaurants  |
+|              |
+| Awafi Foods  |
+| Adams Lounge |
+| Hot Bread    |
 
 
 Scenario Outline: (Negative Scenario) Unable to search for restaurant(s) through 'Change Location'
@@ -52,3 +67,18 @@ Examples:
 | restaurants      |
 | Papa Johns       |
 | Frankie & Bennys |
+| £$$£$            |
+| 09098            |
+
+
+Scenario Outline: Unable to search through 'Change Location' using invalid values
+ 		Given I want food in AR51 1AA
+ 		When I search for <invalidValues>
+ 		And I change the area to W3 7JL using the 'Change Location' button
+		And I search for <invalidValues>
+		Then I shouldn't see the <invalidValues> and I see the error message No match found
+
+Examples:
+| invalidValues |
+| £$$£$         |
+| 09098         |
