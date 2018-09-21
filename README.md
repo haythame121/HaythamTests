@@ -1,6 +1,6 @@
 # .Net-Core-Specflow-Sample
 
-(Read Me) Restaurant Search Tests:
+Restaurant Search Automation Tests:
 
 Set up:
 
@@ -17,9 +17,7 @@ Additional packages to support the Automation framework:
 
 Running the tests:
 
-The tests can be run in either Mac or Windows.
+The tests can run on either Mac or Windows.
 To run the tests: 
-1) Unzip the file, use and IDE (compatible for running Specflow tests), launch the sln file and Build solution before running.
+1) Unzip the file, use an IDE (compatible for running Specflow tests), launch the sln file and Build solution before running.
 2) Or, simply clone the project from https://github.com/haythame121/HaythamTests and launch the sln.
-
-
