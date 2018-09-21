@@ -26,8 +26,6 @@ Examples:
 | restaurants    |
 | Nando's        |
 | Persian Palace |
-| £$$£$          |
-| 09098          |
 
 
 Scenario Outline: Unable to search in an area using invalid values
@@ -67,8 +65,6 @@ Examples:
 | restaurants      |
 | Papa Johns       |
 | Frankie & Bennys |
-| £$$£$            |
-| 09098            |
 
 
 Scenario Outline: Unable to search through 'Change Location' using invalid values
