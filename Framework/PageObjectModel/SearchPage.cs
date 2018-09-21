@@ -6,7 +6,7 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
 {
     public class SearchPage
     {
-        private const string SearchUrl = "http://www.just-eat.co.uk/";
+        private const string SearchUrl = "https://www.just-eat.co.uk/";
         private readonly IWebDriver _driver;
 
         //Identified objects from page elements

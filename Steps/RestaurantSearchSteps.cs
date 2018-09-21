@@ -39,6 +39,9 @@ namespace RestaurantSearch.UITests.Steps
             //Search by Postcode and submit
             _searchPage.Search(_searchPage.PostcodeSearchInput, input);
             _searchPage.SearchButton.Click();
+
+            //Selecting 'All Restaurants' from pop up
+            _searchPage.SearchButton.Click();
         }
 
         [When(@"I search for (.*)")]
