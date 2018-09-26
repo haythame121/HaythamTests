@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 namespace RestaurantSearch.UITests.Framework.PageObjectModel
@@ -8,6 +10,7 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
     {
         private const string SearchUrl = "https://www.just-eat.co.uk/";
         private readonly IWebDriver _driver;
+        private WebDriverWait wait;
 
         //Identified objects from page elements
         [FindsBy(How = How.Name, Using = "postcode")]
@@ -27,6 +30,7 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
         {
             _driver = driver;
             PageFactory.InitElements(driver, this);
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
         //Re-Usable methods
         public void Navigate()
@@ -42,11 +46,11 @@ namespace RestaurantSearch.UITests.Framework.PageObjectModel
 
         public string FindInPage()
         {
-            Thread.Sleep(3000);
-            var header = RestaurantHeader.FindElement(By.TagName("h1"));
-            var subHeaderTxt = header.Text;
 
-            return subHeaderTxt;
+            wait.Until(x => int.Parse(RestaurantHeader.FindElement(By.ClassName("c-serp__header--count")).Text) < 414) || 
+                int.Parse(RestaurantHeader.FindElement(By.ClassName("c-serp__header--count")).Text) == null) ;
+
+            return RestaurantHeader.FindElement(By.TagName("h1")).Text;
         }
         //Including IWebElement parameter to Click in other areas in the test journey
         public void Click(IWebElement searchOn)

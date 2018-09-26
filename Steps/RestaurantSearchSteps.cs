@@ -40,7 +40,6 @@ namespace RestaurantSearch.UITests.Steps
             _searchPage.Search(_searchPage.PostcodeSearchInput, input);
             _searchPage.SearchButton.Click();
 
-            //Selecting 'All Restaurants' from pop up
             _searchPage.SearchButton.Click();
         }
 
@@ -77,7 +76,7 @@ namespace RestaurantSearch.UITests.Steps
             Assert.That(actualSubheaderforRestaurant.Contains(expectedPostcode));
         }
 
-        [Then(@"I shouldn't see the (.*) and I see the error message (.*)")]
+        [Then(@"I shouldn't see the (.*) and I see the (.*)")]
         public void ThenIShouldntSeeSomeRestaurantsIn(string restaurant, string errorMessage)
         {
             //Assertion on error result
